@@ -19,7 +19,22 @@
             background-color: #f8f9fa;
         }
 
+        .maze-container {
+            max-width: 100%;
+            padding-right: 0;
+            padding-left: 0;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
         #gameContainer {
+            position: relative;
+            width: 1010px;
+            height: 1010px;
+            margin: 0 auto;
+        }
+
+        /* #gameContainer {
             position: relative;
             max-width: 1010px;
             margin: 3rem auto;
@@ -27,7 +42,9 @@
             background-color: #ffffff;
             border: 1px solid #dee2e6;
             border-radius: .25rem;
-        }
+            width: 1010;
+            height: 1010;
+        } */
 
         canvas {
             position: absolute;
@@ -52,17 +69,92 @@
             color: white;
             text-align: center;
         }
+
+        /* ... (previous code remains the same) */
+
+        .d-pad-outline {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 120px;
+            height: 120px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 60px;
+        }
+
+        .d-pad-outline:before,
+        .d-pad-outline:after {
+            content: "";
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .d-pad-outline:before {
+            width: 40px;
+            height: 120px;
+            left: 40px;
+        }
+
+        .d-pad-outline:after {
+            width: 120px;
+            height: 40px;
+            top: 40px;
+        }
+
+        #dpad div {
+            flex: 1;
+        }
+
+        #dpad button {
+            margin: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: #ffffff;
+        }
+
+        #dpad button:active {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        @media (min-width: 768px) {
+            #dpad {
+                display: none;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div id="gameContainer">
+    <div class="maze-container">
+        <div id="gameContainer" class="d-flex flex-column" width="1010" height="1010">
             <canvas id="gameCanvas" width="1010" height="1010"></canvas>
             <canvas id="playerCanvas" width="1010" height="1010"></canvas>
             <canvas id="timerCanvas" width="1010" height="50"></canvas>
             <div id="overlay">
                 <div id="overlayText"></div>
+            </div>
+        </div>
+    </div>
+    <div id="dpad" class="fixed-bottom">
+        <div class="d-pad-outline">
+            <div class="d-flex">
+                <div></div>
+                <button id="up" class="btn btn-secondary">Up</button>
+                <div></div>
+            </div>
+            <div class="d-flex">
+                <button id="left" class="btn btn-secondary">Left</button>
+                <button id="right" class="btn btn-secondary">Right</button>
+            </div>
+            <div class="d-flex">
+                <div></div>
+                <button id="down" class="btn btn-secondary">Down</button>
+                <div></div>
             </div>
         </div>
     </div>

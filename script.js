@@ -200,6 +200,24 @@ function displayCompletionScreen() {
     overlay.style.display = 'block';
 }
 
+function resizeCanvas() {
+    const maxSize = Math.min(window.innerWidth, window.innerHeight) - 100;
+    canvas.width = maxSize;
+    canvas.height = maxSize;
+    playerCanvas.width = maxSize;
+    playerCanvas.height = maxSize;
+    timerCanvas.width = maxSize;
+    timerCanvas.height = 50;
+}
+
+resizeCanvas();
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    drawMaze();
+    drawPlayer();
+});
+
 function draw() {
     movePlayer();
     drawPlayer();
@@ -208,6 +226,28 @@ function draw() {
 }
 document.addEventListener('keydown', handleKeyDown);
 document.addEventListener('keyup', handleKeyUp);
+
+function addDpadEventListeners() {
+    const upButton = document.getElementById('up');
+    const downButton = document.getElementById('down');
+    const leftButton = document.getElementById('left');
+    const rightButton = document.getElementById('right');
+
+    upButton.addEventListener('touchstart', () => keys.w = true);
+    upButton.addEventListener('touchend', () => keys.w = false);
+
+    downButton.addEventListener('touchstart', () => keys.s = true);
+    downButton.addEventListener('touchend', () => keys.s = false);
+
+    leftButton.addEventListener('touchstart', () => keys.a = true);
+    leftButton.addEventListener('touchend', () => keys.a = false);
+
+    rightButton.addEventListener('touchstart', () => keys.d = true);
+    rightButton.addEventListener('touchend', () => keys.d = false);
+}
+
+addDpadEventListeners();
+
 
 draw();
 drawMaze();
