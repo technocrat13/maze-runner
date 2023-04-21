@@ -3,11 +3,11 @@ const ctx = canvas.getContext('2d');
 const playerCanvas = document.getElementById('playerCanvas');
 const playerCtx = playerCanvas.getContext('2d');
 
-const tileSize = 10;
-const mazeWidth = 75;
-const mazeHeight = 75;
+const tileSize = 15;
+const mazeWidth = 51;
+const mazeHeight = 51;
 
-const maze = rotateMaze180(generateMaze(mazeWidth, mazeHeight));
+const maze = generateMaze(mazeWidth, mazeHeight);
 const mazeCanvas = document.createElement('canvas');
 mazeCanvas.width = mazeWidth * tileSize;
 mazeCanvas.height = mazeHeight * tileSize;
@@ -57,49 +57,9 @@ function generateMaze(width, height) {
     }
 
     dfs(1, 1);
-    return maze;
-}
-
-function rotateMaze180(maze) {
     const rotatedMaze = maze.map(row => row.slice().reverse());
     return rotatedMaze.reverse();
 }
-
-
-function drawMaze() {
-    for (let y = 0; y < maze.length; y++) {
-        for (let x = 0; x < maze[y].length; x++) {
-            if (maze[y][x]) {
-                mazeCtx.fillStyle = 'black';
-            } else {
-                mazeCtx.fillStyle = 'white';
-            }
-            mazeCtx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
-        }
-    }
-
-    // Draw the exit
-    mazeCtx.fillStyle = 'green';
-    mazeCtx.fillRect(exit.x * tileSize, exit.y * tileSize, tileSize, tileSize);
-}
-
-function drawPlayer() {
-    playerCtx.clearRect(0, 0, playerCanvas.width, playerCanvas.height);
-    playerCtx.drawImage(mazeCanvas, 0, 0);
-    playerCtx.fillStyle = 'red';
-    playerCtx.fillRect(player.x * tileSize, player.y * tileSize, tileSize, tileSize);
-}
-
-// function draw() {
-//     drawPlayer();
-//     requestAnimationFrame(draw);
-// }
-
-// ... (rest of the code remains the same)
-
-
-
-// ... (rest of the code remains the same)
 
 
 function drawMaze() {

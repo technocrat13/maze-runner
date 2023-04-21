@@ -1,24 +1,32 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maze Game</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+Knujsl5/5v+z7l5g2r1C1z9Cue5du5K7y5wr5dff5h7f2/ngUkyJevW6h5EAKBB//+//"
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz4fnFO9gybBud6bDPO4H0WS4N8B/X4x3wRE4B4p8b4j8dXl1AA//sGp6+9"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #222;
+            background-color: #f8f9fa;
         }
 
         #gameContainer {
-            position: absolute;
+            position: relative;
+            max-width: 1010px;
+            margin: 3rem auto;
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-radius: .25rem;
         }
 
         canvas {
@@ -36,6 +44,7 @@
             display: none;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
         }
 
         #overlayText {
@@ -45,15 +54,19 @@
         }
     </style>
 </head>
+
 <body>
-    <div id="gameContainer">
-        <canvas id="gameCanvas" width="1010" height="1010"></canvas>
-        <canvas id="playerCanvas" width="1010" height="1010"></canvas>
-    </div>
-    <canvas id="timerCanvas" width="400" height="50"></canvas>
-    <div id="overlay">
-        <div id="overlayText"></div>
+    <div class="container">
+        <div id="gameContainer">
+            <canvas id="gameCanvas" width="1010" height="1010"></canvas>
+            <canvas id="playerCanvas" width="1010" height="1010"></canvas>
+            <canvas id="timerCanvas" width="1010" height="50"></canvas>
+            <div id="overlay">
+                <div id="overlayText"></div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
